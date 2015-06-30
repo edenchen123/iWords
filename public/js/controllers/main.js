@@ -1,50 +1,39 @@
 angular.module('todoController', [])
 
-	// inject the Todo service factory into our controller
-	.controller('mainController', ['$scope','$http','Todos', function($scope, $http, Todos) {
-		$scope.formData = {};
-		$scope.loading = true;
+    .controller('mainController', ['$scope', '$http', 'Words', function ($scope, $http, Words) {
 
-		// GET =====================================================================
-		// when landing on the page, get all todos and show them
-		// use the service to get all the todos
-		Todos.get()
-			.success(function(data) {
-				$scope.todos = data;
-				$scope.loading = false;
-			});
+        Words.list().success(function (data) {
+                $scope.words = data;
+            });
+        $scope.getConWords = function(text){
+           return Words.query(text).then(function(data){
+                return data.data;
+            });
+        };
+        $scope.createWord = function () {
+            if($scope.formData.conWord){
+                $scope.formData.groupId = $scope.formData.conWord.groupId;
+                $scope.formData.type = $scope.formData.conWord.type;
+            }else{
+                $scope.formData.groupId = $scope.formData.word + "_" + Math.floor((Math.random() * 10000000000) + 1);
+            }
+            //todo user name
+            Words.create($scope.formData).success(function (data) {
+                    $scope.formData = {};
+            });
+        };
 
-		// CREATE ==================================================================
-		// when submitting the add form, send the text to the node API
-		$scope.createTodo = function() {
 
-			// validate the formData to make sure that something is there
-			// if form is empty, nothing will happen
-			if ($scope.formData.text != undefined) {
-				$scope.loading = true;
-
-				// call the create function from our service (returns a promise object)
-				Todos.create($scope.formData)
-
-					// if successful creation, call our get function to get all the new todos
-					.success(function(data) {
-						$scope.loading = false;
-						$scope.formData = {}; // clear the form so our user is ready to enter another
-						$scope.todos = data; // assign our new list of todos
-					});
-			}
-		};
-
-		// DELETE ==================================================================
-		// delete a todo after checking it
-		$scope.deleteTodo = function(id) {
-			$scope.loading = true;
-
-			Todos.delete(id)
-				// if successful creation, call our get function to get all the new todos
-				.success(function(data) {
-					$scope.loading = false;
-					$scope.todos = data; // assign our new list of todos
-				});
-		};
-	}]);
+        //// DELETE ==================================================================
+        //// delete a todo after checking it
+        //$scope.deleteTodo = function (id) {
+        //    $scope.loading = true;
+        //
+        //    Todos.delete(id)
+        //        // if successful creation, call our get function to get all the new todos
+        //        .success(function (data) {
+        //            $scope.loading = false;
+        //            $scope.todos = data; // assign our new list of todos
+        //        });
+        //};
+    }]);
