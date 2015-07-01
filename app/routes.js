@@ -10,7 +10,7 @@ function getWords(res) {
 
 function checkAuth(req, res, next) {
     if (!req.session.user_id) {
-        res.redirect('/iwords/login');
+        res.status(403).send('Permission Denied!');
     } else {
         next();
     }
