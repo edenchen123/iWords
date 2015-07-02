@@ -19,8 +19,8 @@ function checkAuth(req, res, next) {
 module.exports = function (app) {
     app.post('/login', function (req, res) {
         var post = req.body;
-        if (post.username === 'eden' && post.password === '4321') {
-            req.session.user_id = "eden";
+        if ((post.username === 'eden' && post.password === '4321') || (post.username === 'susie' && post.password === '4321')) {
+            req.session.user_id = post.username;
             res.redirect('/iwords');
         } else {
             res.redirect('/iwords/login');
