@@ -1,7 +1,7 @@
 angular.module('todoController', [])
 
     .controller('mainController', ['$scope', '$http', 'Words', function ($scope, $http, Words) {
-
+        $scope.formData={};
         Words.list().success(function (data) {
                 $scope.words = data;
             });
@@ -19,7 +19,8 @@ angular.module('todoController', [])
             }
             //todo user name
             Words.create($scope.formData).success(function (data) {
-                    $scope.formData = {};
+                $scope.formData = {};
+                alert("Word Added!");
             });
         };
 

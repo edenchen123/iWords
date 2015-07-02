@@ -32,9 +32,11 @@ module.exports = function (app) {
     });
 
     app.get('/api/words/:word', checkAuth, function (req, res) {
-        Word.find({
+        Word.find({$or:[{
             word:  new RegExp('.*'+req.params.word+'.*', "i")
-        }, function (err, word) {
+        },{
+            explain:  new RegExp('.*'+req.params.word+'.*', "i")
+        }]}, function (err, word) {
             if (err)
                 res.send(err);
             res.json(word);
