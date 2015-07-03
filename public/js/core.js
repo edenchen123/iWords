@@ -1,4 +1,4 @@
-angular.module('scotchTodo', ['todoController', 'todoService', 'ui.bootstrap', 'akoenig.deckgrid']).config(['$provide','$httpProvider', function($provide,$httpProvider){
+angular.module('scotchTodo', ['todoController', 'todoService', 'ui.bootstrap']).config(['$provide','$httpProvider', function($provide,$httpProvider){
     $provide.factory('myHttpErrorInterceptor', function ($q) {
         return {
             'responseError': function (response) {
