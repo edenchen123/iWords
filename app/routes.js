@@ -53,7 +53,8 @@ module.exports = function (app) {
             explain: req.body.explain,
             type: req.body.type,
             groupId : req.body.groupId,
-            user : req.body.user
+            user : req.session.user_id,
+            date:new Date()
         }, function (err, word) {
             if (err)
                 res.send(err);

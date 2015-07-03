@@ -5,5 +5,6 @@ module.exports = mongoose.model('Word', {
 	explain : {type : String, default: ''},
 	type : {type : String, default: ''},
 	groupId : {type : String, default: ''},
-	user : {type : String, default: 'eden'}
+	user : {type : String, default: 'eden'},
+    date:{type : Date, default: new Date()}
 });
