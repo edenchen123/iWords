@@ -24,7 +24,12 @@ angular.module('todoController', [])
 
         };
         $scope.getConWords = function(text){
-           return Words.query(text).then(function(data){
+            return Words.query(text).then(function(data){
+                return data.data;
+            });
+        };
+        $scope.getConWord = function(text){
+            return Words.get(text).then(function(data){
                 return data.data;
             });
         };
@@ -36,10 +41,17 @@ angular.module('todoController', [])
                 $scope.formData.groupId = $scope.formData.word + "_" + Math.floor((Math.random() * 10000000000) + 1);
             }
             if($scope.wordForm.$valid){
-                Words.create($scope.formData).success(function (data) {
-                    $scope.formData={type:"synonyms"};
-                    alert("Word Added!");
+                $scope.getConWord(angular.lowercase($scope.formData.word)).then(function(existed){
+                    if(existed && existed.length > 0){
+                        alert($scope.formData.word + " is Existed!");
+                    }else{
+                        Words.create($scope.formData).success(function (data) {
+                            $scope.formData={type:"synonyms"};
+                            alert("Word Added!");
+                        });
+                    }
                 });
+
             }
         };
 

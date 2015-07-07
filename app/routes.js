@@ -42,6 +42,13 @@ module.exports = function (app) {
             res.json(word);
         });
     });
+    app.get('/api/word/:word', checkAuth, function (req, res) {
+        Word.findOne({word: req.params.word}, function (err, word) {
+            if (err)
+                res.send(err);
+            res.json(word);
+        });
+    });
 
     app.get('/api/words',checkAuth, function (req, res) {
         getWords(res);

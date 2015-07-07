@@ -7,6 +7,9 @@ angular.module('todoService', [])
 			query : function(text) {
 				return $http.get('/api/words/'+text);
 			},
+			get : function(text) {
+				return $http.get('/api/word/'+text);
+			},
 			list : function() {
 				return $http.get('/api/words');
 			},
