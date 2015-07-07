@@ -1,7 +1,7 @@
 angular.module('todoController', [])
 
     .controller('mainController', ['$scope', '$http', 'Words', function ($scope, $http, Words) {
-        $scope.formData={};
+        $scope.formData={type:"synonyms"};
         Words.list().success(function (data) {
             $scope.words_groups_array = [];
             data.map(function (a) {
@@ -35,11 +35,12 @@ angular.module('todoController', [])
             }else{
                 $scope.formData.groupId = $scope.formData.word + "_" + Math.floor((Math.random() * 10000000000) + 1);
             }
-            //todo user name
-            Words.create($scope.formData).success(function (data) {
-                $scope.formData = {};
-                alert("Word Added!");
-            });
+            if($scope.wordFrom.$valid){
+                Words.create($scope.formData).success(function (data) {
+                    $scope.formData={type:"synonyms"};
+                    alert("Word Added!");
+                });
+            }
         };
 
 
