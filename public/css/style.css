@@ -1,5 +1,5 @@
 .word_card{
-    width: 300px;
+    /*max-width: 350px;*/
     border: 2px dashed #3498DB;
     padding: 5px;
     margin: 10px;

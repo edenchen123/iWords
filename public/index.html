@@ -14,18 +14,6 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- SPELLS -->
-    <script src="js/lib/angular.js"></script>
-    <script src="js/lib/ui-bootstrap-tpls-0.13.0.js"></script>
-    <!-- load angular -->
-
-    <script src="js/controllers/main.js"></script>
-    <!-- load up our controller -->
-    <script src="js/services/todos.js"></script>
-    <!-- load our todo service -->
-    <script src="js/core.js"></script>
-    <!-- load our main application -->
-
 </head>
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
@@ -81,7 +69,7 @@
             </div>
         </tab>
         <tab heading="List" active="true">
-            <div class="row" style="padding: 5px;">
+            <div class="row" style="padding: 5px;" water-fall>
                 <!--http://dfcreative.github.io/projects/waterfall/#start-case-->
                 <div class="pull-left word_card" ng-repeat="wg in words_groups_array">
                     <div ng-repeat="w in wg.words">
@@ -94,6 +82,19 @@
     </tabset>
     </form>
 </div>
+<!-- SPELLS -->
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/angular.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-0.13.0.js"></script>
+<script src="js/lib/zepto.js"></script>
+<script src="js/lib/jquery.waterfall.js"></script>
+<!-- load angular -->
 
+<script src="js/controllers/main.js"></script>
+<!-- load up our controller -->
+<script src="js/services/todos.js"></script>
+<!-- load our todo service -->
+<script src="js/core.js"></script>
+<!-- load our main application -->
 </body>
 </html>

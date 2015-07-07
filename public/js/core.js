@@ -12,4 +12,17 @@ angular.module('scotchTodo', ['todoController', 'todoService', 'ui.bootstrap']).
     });
     $httpProvider.interceptors.push('myHttpErrorInterceptor');
 
-}]);
+}]).directive('waterFall', function () {
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs) {
+            setTimeout(function(){
+                $(elem).waterfall({
+                    colMinWidth: 300,
+                    //defaultContainerWidth: 800,
+                    autoresize: true
+                })
+            },500);
+        }
+    }
+});
