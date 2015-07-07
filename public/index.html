@@ -36,9 +36,9 @@
         <p>Vocabulary</p>
         <h7>Eden Chen</h7>
     </div>
+    <form name="wordForm" role="form" class="form-horizontal" style="margin-top: 30px;">
     <tabset>
         <tab heading="Create">
-            <form class="form-horizontal" ng-submit="createWord()" style="margin-top: 30px;" name="wordFrom">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Word</label>
                     <div class="col-sm-10">
@@ -74,10 +74,9 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default" style="margin: auto;width:100%;">Add</button>
+                        <button type="submit" class="btn btn-default" style="margin: auto;width:100%;" ng-click="createWord()">Add</button>
                     </div>
                 </div>
-            </form>
         </tab>
         <tab heading="List" active="true">
             <div class="row" style="padding: 5px;">
@@ -91,6 +90,7 @@
             </div>
         </tab>
     </tabset>
+    </form>
 </div>
 
 </body>

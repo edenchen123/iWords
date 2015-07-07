@@ -35,7 +35,7 @@ angular.module('todoController', [])
             }else{
                 $scope.formData.groupId = $scope.formData.word + "_" + Math.floor((Math.random() * 10000000000) + 1);
             }
-            if($scope.wordFrom.$valid){
+            if($scope.wordForm.$valid){
                 Words.create($scope.formData).success(function (data) {
                     $scope.formData={type:"synonyms"};
                     alert("Word Added!");
