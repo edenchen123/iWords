@@ -2,13 +2,15 @@ angular.module('todoController', [])
 
     .controller('mainController', ['$scope', '$http', 'Words', function ($scope, $http, Words) {
         $scope.formData={type:"synonyms"};
-        Words.list().success(function (data) {
-            $scope.words_groups_array = [];
-            data.map(function (a) {
-                tansform(a);
+        $scope.getMyWords = function(){
+            Words.list().success(function (data) {
+                $scope.words_groups_array = [];
+                data.map(function (a) {
+                    tansform(a);
+                });
+                console.log($scope.words_groups_array);
             });
-            console.log($scope.words_groups_array);
-            });
+        };
         function tansform(a){
             var existed =false;
             angular.forEach($scope.words_groups_array,function(v,i){
@@ -25,7 +27,13 @@ angular.module('todoController', [])
         };
         $scope.getConWords = function(text){
             return Words.query(text).then(function(data){
-                return data.data;
+                var words = data.data
+                angular.forEach(words, function(w){
+                    var word = w.word;
+                    var explains = w.explain.substring(0,15);
+                    w.wordFull = word + "("+explains+")";
+                });
+                return words;
             });
         };
         $scope.getConWord = function(text){

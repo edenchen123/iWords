@@ -45,7 +45,7 @@
                     <div class="col-sm-10">
                         <!--<input class="form-control" id="inputEmail3222" placeholder="Word" ng-model="formData.conWord">-->
                         <input id="inputEmail3222" ng-model="formData.conWord" placeholder="Connect with ...."
-                               typeahead="item as item.word for item in getConWords($viewValue)" typeahead-loading="loadingWords"
+                               typeahead="item as item.wordFull for item in getConWords($viewValue)" typeahead-loading="loadingWords"
                                class="form-control" typeahead-wait-ms="200">
                         <!--<i ng-show="loadingWords" class="glyphicon glyphicon-refresh"></i>-->
                     </div>
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </tab>
-        <tab heading="List" active="true">
+        <tab heading="List" active="true" select="getMyWords()">
             <div class="row" style="padding: 5px;" water-fall>
                 <!--http://dfcreative.github.io/projects/waterfall/#start-case-->
                 <div class="pull-left word_card" ng-repeat="wg in words_groups_array">
