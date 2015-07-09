@@ -10,36 +10,36 @@
     margin-bottom: 0px;
 }
 
-.bs-docs-nav {
+.bs-word-nav {
     margin-bottom: 0;
     background-color: #fff;
     border-bottom: 0
 }
 
-.bs-docs-nav .navbar-brand, .bs-docs-nav .navbar-nav > li > a {
+.bs-word-nav .navbar-brand, .bs-word-nav .navbar-nav > li > a {
     font-weight: 500;
     color: #563d7c
 }
 
-.bs-docs-nav .navbar-nav > .active > a, .bs-docs-nav .navbar-nav > .active > a:hover, .bs-docs-nav .navbar-nav > li > a:hover {
+.bs-word-nav .navbar-nav > .active > a, .bs-word-nav .navbar-nav > .active > a:hover, .bs-word-nav .navbar-nav > li > a:hover {
     color: #463265;
     background-color: #f9f9f9
 }
 
-.bs-docs-nav .navbar-toggle .icon-bar {
+.bs-word-nav .navbar-toggle .icon-bar {
     background-color: #563d7c
 }
 
-.bs-docs-nav .navbar-header .navbar-toggle {
+.bs-word-nav .navbar-header .navbar-toggle {
     border-color: #fff
 }
 
-.bs-docs-nav .navbar-header .navbar-toggle:focus, .bs-docs-nav .navbar-header .navbar-toggle:hover {
+.bs-word-nav .navbar-header .navbar-toggle:focus, .bs-word-nav .navbar-header .navbar-toggle:hover {
     background-color: #f9f9f9;
     border-color: #f9f9f9
 }
 
-.bs-docs-header {
+.bs-word-header {
     position: relative;
     padding: 30px 0;
     color: #cdbfe3;
@@ -54,42 +54,42 @@
     background-repeat: repeat-x
 }
 
-.bs-docs-header {
+.bs-word-header {
     margin-bottom: 40px;
     font-size: 20px
 }
 
-.bs-docs-header h1 {
+.bs-word-header h1 {
     margin-top: 0;
     color: #fff
 }
 
-.bs-docs-header p {
+.bs-word-header p {
     margin-bottom: 0;
     font-weight: 300;
     line-height: 1.4
 }
 
-.bs-docs-header .container {
+.bs-word-header .container {
     position: relative
 }
 
 @media (min-width: 768px) {
-    .bs-docs-header {
+    .bs-word-header {
         padding-top: 60px;
         padding-bottom: 60px;
         font-size: 24px;
         text-align: left
     }
 
-    .bs-docs-header h1 {
+    .bs-word-header h1 {
         font-size: 60px;
         line-height: 1
     }
 }
 
 @media (min-width: 992px) {
-    .bs-docs-header h1, .bs-docs-header p {
+    .bs-word-header h1, .bs-word-header p {
         margin-right: 380px
     }
 }
