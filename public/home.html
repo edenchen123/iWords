@@ -1,0 +1,9 @@
+<div class="row" style="padding: 5px;" water-fall>
+    <!--http://dfcreative.github.io/projects/waterfall/#start-case-->
+    <div class="pull-left word_card" ng-repeat="wg in words_groups_array">
+        <div ng-repeat="w in wg.words">
+            <p class="text-center">{{w.word}}</p>
+            <small><p class="text-justify">{{w.explain}}</p></small>
+        </div>
+    </div>
+</div>

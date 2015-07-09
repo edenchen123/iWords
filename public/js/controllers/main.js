@@ -1,30 +1,6 @@
 angular.module('todoController', [])
-
     .controller('mainController', ['$scope', '$http', 'Words', function ($scope, $http, Words) {
         $scope.formData={type:"synonyms"};
-        $scope.getMyWords = function(){
-            Words.list().success(function (data) {
-                $scope.words_groups_array = [];
-                data.map(function (a) {
-                    tansform(a);
-                });
-                console.log($scope.words_groups_array);
-            });
-        };
-        function tansform(a){
-            var existed =false;
-            angular.forEach($scope.words_groups_array,function(v,i){
-              if(a.groupId === v.gid){
-                  existed = true;
-                  v.words.push(a);
-                  return -1;
-              }
-            });
-            if(!existed){
-                $scope.words_groups_array.push({gid:a.groupId,type: a.type,words:[a]});
-            }
-
-        };
         $scope.getConWords = function(text){
             return Words.query(text).then(function(data){
                 var words = data.data

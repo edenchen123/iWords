@@ -18,73 +18,48 @@
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
 <div class="container">
-<a href="/logout" class="pull-right">logout!</a>
-    <!-- HEADER AND TODO COUNT -->
-    <div class="jumbotron text-center">
-        <p>Vocabulary</p>
-        <h7>Eden Chen</h7>
-    </div>
-    <form name="wordForm" role="form" class="form-horizontal">
-    <tabset>
-        <tab heading="Create">
-            <div class="row" style="padding: 5px;">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Word</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" id="inputEmail3" placeholder="Word" ng-model="formData.word" ng-required="true">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Explanations</label>
-                    <div class="col-sm-10">
-                        <textarea id="inputPassword3" class="form-control" rows="3" placeholder="Explanations" ng-model="formData.explain" ng-required="true"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3222" class="col-sm-2 control-label">Connect with</label>
-                    <div class="col-sm-10">
-                        <!--<input class="form-control" id="inputEmail3222" placeholder="Word" ng-model="formData.conWord">-->
-                        <input id="inputEmail3222" ng-model="formData.conWord" placeholder="Connect with ...."
-                               typeahead="item as item.wordFull for item in getConWords($viewValue)" typeahead-loading="loadingWords"
-                               class="form-control" typeahead-wait-ms="200">
-                        <!--<i ng-show="loadingWords" class="glyphicon glyphicon-refresh"></i>-->
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="wordtype" class="col-sm-2 control-label">Type</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" id="wordtype" ng-model="formData.type" ng-required="true">
-                            <option value="synonyms">Synonyms</option>
-                            <option value="pronunciation">Pronunciation</option>
-                            <option value="structure">Structure</option>
-                            <option value="others">Others</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default" style="margin: auto;width:100%;" ng-click="createWord()">Add</button>
-                    </div>
-                </div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Eden</a>
             </div>
-        </tab>
-        <tab heading="List" active="true" select="getMyWords()">
-            <div class="row" style="padding: 5px;" water-fall>
-                <!--http://dfcreative.github.io/projects/waterfall/#start-case-->
-                <div class="pull-left word_card" ng-repeat="wg in words_groups_array">
-                    <div ng-repeat="w in wg.words">
-                        <p class="text-center">{{w.word}}</p>
-                        <small><p class="text-justify">{{w.explain}}</p></small>
-                    </div>
-                </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active" menu-high-lighter><a href="#/home">Home <span class="sr-only">(current)</span></a></li>
+                    <li menu-high-lighter><a href="#/create">Create</a></li>
+                    <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                    <!--<li><a href="#">Action</a></li>-->
+                    <!--<li><a href="#">Another action</a></li>-->
+                    <!--<li><a href="#">Something else here</a></li>-->
+                    <!--<li role="separator" class="divider"></li>-->
+                    <!--<li><a href="#">Separated link</a></li>-->
+                    <!--<li role="separator" class="divider"></li>-->
+                    <!--<li><a href="#">One more separated link</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <a href="/logout" class="pull-right">logout!</a>
+                </ul>
             </div>
-        </tab>
-    </tabset>
-    </form>
+        </div>
+    </nav>
+    <div ng-view class="view-animate"></div>
 </div>
 <!-- SPELLS -->
 <script src="js/lib/jquery.js"></script>
 <script src="js/lib/angular.js"></script>
+<script src="js/lib/angular-route.min.js"></script>
 <script src="js/lib/ui-bootstrap-tpls-0.13.0.js"></script>
 <script src="js/lib/zepto.js"></script>
 <script src="js/lib/jquery.waterfall.js"></script>

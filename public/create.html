@@ -1,0 +1,52 @@
+<form name="wordForm" role="form" class="form-horizontal">
+
+    <div class="row" style="padding: 5px;">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Word</label>
+
+            <div class="col-sm-10">
+                <input class="form-control" id="inputEmail3" placeholder="Word" ng-model="formData.word"
+                       ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Explanations</label>
+
+            <div class="col-sm-10">
+                            <textarea id="inputPassword3" class="form-control" rows="3" placeholder="Explanations"
+                                      ng-model="formData.explain" ng-required="true"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3222" class="col-sm-2 control-label">Connect with</label>
+
+            <div class="col-sm-10">
+                <!--<input class="form-control" id="inputEmail3222" placeholder="Word" ng-model="formData.conWord">-->
+                <input id="inputEmail3222" ng-model="formData.conWord" placeholder="Connect with ...."
+                       typeahead="item as item.wordFull for item in getConWords($viewValue)"
+                       typeahead-loading="loadingWords"
+                       class="form-control" typeahead-wait-ms="200">
+                <!--<i ng-show="loadingWords" class="glyphicon glyphicon-refresh"></i>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="wordtype" class="col-sm-2 control-label">Type</label>
+
+            <div class="col-sm-10">
+                <select class="form-control" id="wordtype" ng-model="formData.type" ng-required="true">
+                    <option value="synonyms">Synonyms</option>
+                    <option value="pronunciation">Pronunciation</option>
+                    <option value="structure">Structure</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" style="margin: auto;width:100%;"
+                        ng-click="createWord()">Add
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
