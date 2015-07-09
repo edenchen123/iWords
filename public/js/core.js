@@ -19,6 +19,28 @@ angular.module('scotchTodo', ['ngRoute','todoController', 'todoService', 'ui.boo
                 templateUrl: 'create.html',
                 controller:'mainController'
 
+            }).when('/admin', {
+                templateUrl: 'admin.html',
+                controller:function($scope,words,Words){
+                    $scope.words_groups_array = [];
+                    words.data.map(function (a) {
+                        tansform(a,$scope.words_groups_array);
+                    });
+                    $scope.remove = function(w){
+                        Words.delete(w._id).success(function(words){
+                            $scope.words_groups_array = [];
+                            words.map(function (a) {
+                                tansform(a,$scope.words_groups_array);
+                            });
+                            alert("Word deleted!");
+                        });
+                    }
+                },
+                resolve: {
+                    words: function (Words) {
+                        return Words.list();
+                    }
+                }
             }).otherwise({redirectTo: '/home'});
 
         //$locationProvider.html5Mode(true);

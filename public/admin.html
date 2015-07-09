@@ -1,0 +1,30 @@
+<div style="padding: 5px;">
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Word</th>
+            <th>Definitions</th>
+            <th>Date</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat-start="wg in words_groups_array">
+            <td  rowspan="{{wg.words.length +2}}">{{$index+1}}</td>
+            <td colspan="4" style="display: none;">&nbsp;</td>
+        </tr>
+        <tr ng-repeat="w in wg.words">
+            <td><input class="form-control" ng-model="w.word"></td>
+            <td><input class="form-control" ng-model="w.explain"></td>
+            <td>{{w.date | date:"MM/dd/yyyy h:mma"}}</td>
+            <td><button class="btn btn-danger btn-xs" ng-click="remove(w)">Remove</button>
+                <button class="btn btn-primary btn-xs">Save</button>
+            </td>
+        </tr>
+        <tr ng-repeat-end>
+
+        </tr>
+        </tbody>
+    </table>
+</div>

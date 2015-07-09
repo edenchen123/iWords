@@ -70,15 +70,13 @@ module.exports = function (app) {
 
     });
 
-    // delete a todo
-    app.delete('/api/todos/:todo_id', function (req, res) {
-        Todo.remove({
-            _id: req.params.todo_id
+    app.delete('/api/word/:id',checkAuth, function (req, res) {
+        Word.remove({
+            _id: req.params.id
         }, function (err, todo) {
             if (err)
                 res.send(err);
-
-            getTodos(res);
+            getWords(res);
         });
     });
 
