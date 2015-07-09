@@ -27,13 +27,16 @@ angular.module('scotchTodo', ['ngRoute','todoController', 'todoService', 'ui.boo
                         tansform(a,$scope.words_groups_array);
                     });
                     $scope.remove = function(w){
-                        Words.delete(w._id).success(function(words){
-                            $scope.words_groups_array = [];
-                            words.map(function (a) {
-                                tansform(a,$scope.words_groups_array);
+                        var r = confirm("Delete "+ w.word+"?");
+                        if (r == true) {
+                            Words.delete(w._id).success(function(words){
+                                $scope.words_groups_array = [];
+                                words.map(function (a) {
+                                    tansform(a,$scope.words_groups_array);
+                                });
+                                alert("Word deleted!");
                             });
-                            alert("Word deleted!");
-                        });
+                        }
                     }
                 },
                 resolve: {
